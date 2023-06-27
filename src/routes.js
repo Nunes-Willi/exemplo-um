@@ -11,6 +11,10 @@ import Pedidos from './pages/Pedidos';
 import Pagamentos from './pages/Pagamentos';
 
 import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+const Tab = createMaterialTopTabNavigator();
+
 
 const PerfilStack = createStackNavigator();
 
@@ -77,5 +81,18 @@ export default function Routes() {
         />
       </BottomTab.Navigator>
     </NavigationContainer>
+  );
+}
+
+function PedidosRouter() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Pedidos" component={Pedidos} />
+      <Tab.Screen
+        name="PedidosAnteriores"
+        component={PedidosAnteriores}
+        options={{ tabBarLabel: 'Pedidos Anteriores' }}
+      />
+    </Tab.Navigator>
   );
 }
